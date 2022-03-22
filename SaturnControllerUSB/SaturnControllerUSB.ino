@@ -38,6 +38,31 @@
 const char *gp_serial = "SATURN to USB";
 
 /* -------------------------------------------------------------------------
+https://docs.arduino.cc/hacking/hardware/PinMapping32u4
+A0     = PF7
+A1     = PF6
+A2     = PF5
+A3     = PF4
+A4     = PF1
+A5     = PF0
+D0/RX  = PD2
+D1/TX  = PD3
+D2/SDA = PD1
+D3/SCL = PD0
+D4     = PD4
+D5     = PC6
+D6     = PD7
+D7     = PE6
+D8     = PB4
+D9     = PB5
+D10    = PB6
+D11    = PB7
+D12    = PD6
+D13    = PC7
+D14    = PB3
+D15    = PB1
+D16    = PB2 
+
 Saturn controller socket (looking face-on at the front of the socket):
 ___________________
 / 1 2 3 4 5 6 7 8 9 \

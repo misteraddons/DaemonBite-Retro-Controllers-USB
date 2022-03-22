@@ -43,18 +43,44 @@ const char *gp_serial = "NES to USB";
 #define LEFT  0x04
 #define RIGHT 0x08
 
-// Wire it all up according to the following table:
-//
-// NES           SNES        Arduino Pro Micro
-// --------------------------------------
-// VCC                       VCC (All gamepads)
-// GND                       GND (All gamepads)
-// OUT0 (LATCH)              2   (PD1, All gamepads)
-// CUP  (CLOCK)              3   (PD0, All gamepads)
-// D1   (GP1: DATA)          A0  (PF7, Gamepad 1) 
-// D1   (GP2: DATA)          A1  (PF6, Gamepad 2)
-// D1   (GP3: DATA)          A2  (PF5, Gamepad 3, not currently used)
-// D1   (GP4: DATA)          A3  (PF4, Gamepad 4, not currently used)
+/*
+Wire it all up according to the following table:
+
+https://docs.arduino.cc/hacking/hardware/PinMapping32u4
+A0     = PF7
+A1     = PF6
+A2     = PF5
+A3     = PF4
+A4     = PF1
+A5     = PF0
+D0/RX  = PD2
+D1/TX  = PD3
+D2/SDA = PD1
+D3/SCL = PD0
+D4     = PD4
+D5     = PC6
+D6     = PD7
+D7     = PE6
+D8     = PB4
+D9     = PB5
+D10    = PB6
+D11    = PB7
+D12    = PD6
+D13    = PC7
+D14    = PB3
+D15    = PB1
+D16    = PB2
+
+NES        SNES             Arduino Pro Micro
+---------------------------------------------
+VCC                         VCC (All gamepads)
+GND                         GND (All gamepads)
+OUT0       (LATCH)          2   (PD1, All gamepads)
+CUP        (CLOCK)          3   (PD0, All gamepads)
+D1         (GP1: DATA)      A0  (PF7, Gamepad 1) 
+D1         (GP2: DATA)      A1  (PF6, Gamepad 2)
+D1         (GP3: DATA)      A2  (PF5, Gamepad 3, not currently used)
+D1         (GP4: DATA)      A3  (PF4, Gamepad 4, not currently used)
 
 // Set up USB HID gamepads
 Gamepad_ Gamepad[GAMEPAD_COUNT];

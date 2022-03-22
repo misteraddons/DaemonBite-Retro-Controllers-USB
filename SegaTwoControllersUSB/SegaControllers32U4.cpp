@@ -33,19 +33,45 @@
 
 SegaControllers32U4::SegaControllers32U4(void)
 {
-  // Setup input pins (A0,A1,A2,A3,14,15 or PF7,PF6,PF5,PF4,PB3,PB1)
-  DDRF  &= ~B11110000; // input
-  PORTF |=  B11110000; // high to enable internal pull-up
-  DDRB  &= ~B00001010; // input
-  PORTB |=  B00001010; // high to enable internal pull-up
-  // Setup input pins (TXO,RXI,2,3,4,6 or PD3,PD2,PD1,PD0,PD4,PD7)
-  DDRD  &= ~B10011111; // input
-  PORTD |=  B10011111; // high to enable internal pull-up
 
-  DDRC  |= B01000000; // Select pins as output
-  DDRE  |= B01000000; 
-  PORTC |= B01000000; // Select pins high
-  PORTE |= B01000000;
+/*
+https://docs.arduino.cc/hacking/hardware/PinMapping32u4
+A0     = PF7
+A1     = PF6
+A2     = PF5
+A3     = PF4
+A4     = PF1
+A5     = PF0
+D0/RX  = PD2
+D1/TX  = PD3
+D2/SDA = PD1
+D3/SCL = PD0
+D4     = PD4
+D5     = PC6
+D6     = PD7
+D7     = PE6
+D8     = PB4
+D9     = PB5
+D10    = PB6
+D11    = PB7
+D12    = PD6
+D13    = PC7
+D14    = PB3
+D15    = PB1
+D16    = PB2
+*/
+  // Setup input pins (A0,A1,A2,A3,14,15 or PF7,PF6,PF5,PF4,PB3,PB1)
+  DDRF  &= ~B11110000; // input (PF7, PF6, PF5, PF4, !PF3, !PF2, !PF1, !PF0)
+  PORTF |=  B11110000; // high to enable internal pull-up (PF7, PF6, PF5, PF4, !PF3, !PF2, !PF1, !PF0)
+  DDRB  &= ~B00001010; // input (!PB7, !PB6, !PB5, !PB4, PB3, !PB2, PB1, !PB0)
+  PORTB |=  B00001010; // high to enable internal pull-up (PB7, PB6, PB5, PB4, !PB3, !PB2, !PB1, !PB0)
+  // Setup input pins (TXO,RXI,2,3,4,6 or PD3,PD2,PD1,PD0,PD4,PD7)
+  DDRD  &= ~B10011111; // input (PD7, !PD6, !PD5, PD4, PD3, PD2, PD1, PD0)
+  PORTD |=  B10011111; // high to enable internal pull-up (PF7, PF6, PF5, PF4, !PF3, !PF2, !PF1, !PF0)
+  DDRC  |=  B01000000; // Select pins as output (!PC7, PC6, !PC5, !PC4, !PC3, !PC2, !PC1, !PC0)
+  DDRE  |=  B01000000; // Select pins as output (!PE7, PE6, !PE5, !PE4, !PE3, !PE2, !PE1, !PE0)
+  PORTC |=  B01000000; // Select pins high (!PC7, PC6, !PC5, !PC4, !PC3, !PC2, !PC1, !PC0)
+  PORTE |=  B01000000; // Select pins  high (!PE7, PE6, !PE5, !PE4, !PE3, !PE2, !PE1, !PE0)
   
   _pinSelect = true;
   for(byte i=0; i<=1; i++)
