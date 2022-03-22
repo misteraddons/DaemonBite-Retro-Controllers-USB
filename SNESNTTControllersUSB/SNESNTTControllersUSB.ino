@@ -73,16 +73,17 @@ D14    = PB3 [P2-5 / HDMI2P5 / NES2P6|SNES2P5 / DATA4|DATA2]
 D15    = PB1 [P2-4]
 D16    = PB2 [P2-6 / HDMI2P6 / NES2P5|SNES2P6 / DATA3|SELECT]
 
-NES           SNES        Arduino Pro Micro
---------------------------------------
-VCC                       VCC (All gamepads)
-GND                       GND (All gamepads)
-OUT0 (LATCH)              2   (PD1, All gamepads)
-CUP  (CLOCK)              3   (PD0, All gamepads)
-D1   (GP1: DATA)          A0  (PF7, Gamepad 1) 
-D1   (GP2: DATA)          A1  (PF6, Gamepad 2)
-D1   (GP3: DATA)          A2  (PF5, Gamepad 3, not currently used)
-D1   (GP4: DATA)          A3  (PF4, Gamepad 4, not currently used)
+NES        SNES             Arduino Pro Micro
+---------------------------------------------
+VCC                         VCC (All gamepads)
+GND                         GND (All gamepads)
+OUT0       (LATCH)          2   (PD1, All gamepads)
+CUP        (CLOCK)          3   (PD0, All gamepads)
+D1         (GP1: DATA)      A0  (PF7, Gamepad 1) 
+D1         (GP2: DATA)      A1  (PF6, Gamepad 2)
+D1         (GP3: DATA)      A2  (PF5, Gamepad 3, not currently used)
+D1         (GP4: DATA)      A3  (PF4, Gamepad 4, not currently used)
+*/
 
 enum ControllerType {
   NONE,
