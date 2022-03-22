@@ -33,33 +33,60 @@
 
 SegaControllers32U4::SegaControllers32U4(void)
 {
-
 /*
 https://docs.arduino.cc/hacking/hardware/PinMapping32u4
-A0     = PF7
-A1     = PF6
-A2     = PF5
-A3     = PF4
-A4     = PF1
-A5     = PF0
-D0/RX  = PD2
-D1/TX  = PD3
-D2/SDA = PD1
-D3/SCL = PD0
-D4     = PD4
-D5     = PC6
-D6     = PD7
-D7     = PE6
-D8     = PB4
-D9     = PB5
-D10    = PB6
-D11    = PB7
-D12    = PD6
-D13    = PC7
-D14    = PB3
-D15    = PB1
-D16    = PB2
+A0     = PF7 [P2-3 / HDMI2P3 / DE92P3 / GND]
+A1     = PF6 [P2-2 / HDMI2P2 / DE92P2 / P1DOWN
+A2     = PF5 [P2-1 / HDMI2P1 / DE92P2 / P2UP]
+A3     = PF4 [J2_ID]
+A4     = PF1 ------
+A5     = PF0 ------
+D0/RX  = PD2 [P1-9]
+D1/TX  = PD3 [P1-8]
+D2/SDA = PD1 [P1-7 / HDMI1P7 / DE91P9 / START|C]
+D3/SCL = PD0 [P1-6 / HDMI1P6 / DE91P7 / SELECT]
+D4     = PD4 [J1_ID]
+D5     = PC6 [P1-5 / HDMI1P5 / DE91P6 / A]
+D6     = PD7 [P1-4 / HDMI1P4 / DE91P4 / GND]
+D7     = PE6 [P1-3 / HDMI1P3 / DE91P3 / GND]
+D8     = PB4 [P1-2 / HDMI1P2 / DE91P2 / P1DOWN]
+D9     = PB5 [P1-1 / HDMI1P1 / DE91P1 / P1UP]
+D10    = PB6 [P2-7 / HDMI2P7 / DE92P9 / START|C]
+D11    = PB7 ------
+D12    = PD6 ------
+D13    = PC7 ------
+D14    = PB3 [P2-5 / HDMI2P5 / DE92P6 / A]
+D15    = PB1 [P2-4 / HDMI2P4 / DE92P4 / GND]
+D16    = PB2 [P2-6 / HDMI2P6 / DE92P7 / SELECT]
+
+Controller DB9 pins (looking face-on to the end of the plug):
+
+ 5 4 3 2 1
+  9 8 7 6
+
+Connect pin 5 to +5V and pin 8 to GND
+Connect the remaining pins to digital I/O pins (see below)
+P1 DB9    Arduino Pro Micro
+--------------------------------------
+ 1        A0  PF7
+ 2        A1  PF6
+ 3        A2  PF5
+ 4        A3  PF4
+ 6        14  PB3
+ 7         7  PE6
+ 9        15  PB1
+
+P2 DB9    Arduino Pro Micro
+--------------------------------------
+ 1     D0/TX  PD3
+ 2     D1/RX  PD2
+ 3        D2  PD1
+ 4        D3  PD0
+ 6        D4  PD4
+ 7        D5  PC6
+ 9        D6  PD7
 */
+
   // Setup input pins (A0,A1,A2,A3,14,15 or PF7,PF6,PF5,PF4,PB3,PB1)
   DDRF  &= ~B11110000; // input (PF7, PF6, PF5, PF4, !PF3, !PF2, !PF1, !PF0)
   PORTF |=  B11110000; // high to enable internal pull-up (PF7, PF6, PF5, PF4, !PF3, !PF2, !PF1, !PF0)

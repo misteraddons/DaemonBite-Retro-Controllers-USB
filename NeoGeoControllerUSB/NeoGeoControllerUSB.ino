@@ -56,29 +56,29 @@ void setup()
 {
 /*
 https://docs.arduino.cc/hacking/hardware/PinMapping32u4
-A0     = PF7
-A1     = PF6
-A2     = PF5
-A3     = PF4
-A4     = PF1
-A5     = PF0
-D0/RX  = PD2
-D1/TX  = PD3
-D2/SDA = PD1
-D3/SCL = PD0
-D4     = PD4
-D5     = PC6
-D6     = PD7
-D7     = PE6
-D8     = PB4
-D9     = PB5
-D10    = PB6
-D11    = PB7
-D12    = PD6
-D13    = PC7
-D14    = PB3
-D15    = PB1
-D16    = PB2
+A0     = PF7 [P2-3]
+A1     = PF6 [P2-2] 
+A2     = PF5 [P2-1 / HDMI1P10 / DB15P15 / UP]
+A3     = PF4 [J2_ID]
+A4     = PF1 ------
+A5     = PF0 ------
+D0/RX  = PD2 [P1-9 / HDMI1P9 / DB15P14 / LEFT]
+D1/TX  = PD3 [P1-8 / HDMI1P8 / DB15P13 / A]
+D2/SDA = PD1 [P1-7 / HDMI1P7 / DB15P12 / C]
+D3/SCL = PD0 [P1-6 / HDMI1P6 / DB15P11 / START]
+D4     = PD4 [J1_ID]
+D5     = PC6 [P1-5 / HDMI1P5 / DB15P7 / DOWN]
+D6     = PD7 [P1-4 / HDMI1P4 / DB15P6 / RIGHT]
+D7     = PE6 [P1-3 / HDMI1P3 / DB15P5 / B]
+D8     = PB4 [P1-2 / HDMI1P2 / DB15P4 / D]
+D9     = PB5 [P1-1 / HDMI1P1 / DB15P3 / SELECT]
+D10    = PB6 [P2-7]
+D11    = PB7 ------
+D12    = PD6 ------
+D13    = PC7 ------
+D14    = PB3 [P2-5]
+D15    = PB1 [P2-4]
+D16    = PB2 [P2-6]
 */
 
   // Axes

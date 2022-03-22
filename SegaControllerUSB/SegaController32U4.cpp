@@ -35,29 +35,46 @@ SegaController32U4::SegaController32U4(void)
 {
 /*
 https://docs.arduino.cc/hacking/hardware/PinMapping32u4
-A0     = PF7
-A1     = PF6
-A2     = PF5
-A3     = PF4
-A4     = PF1
-A5     = PF0
-D0/RX  = PD2
-D1/TX  = PD3
-D2/SDA = PD1
-D3/SCL = PD0
-D4     = PD4
-D5     = PC6
-D6     = PD7
-D7     = PE6
-D8     = PB4
-D9     = PB5
-D10    = PB6
-D11    = PB7
-D12    = PD6
-D13    = PC7
-D14    = PB3
-D15    = PB1
-D16    = PB2
+A0     = PF7 [P2-3]
+A1     = PF6 [P2-2]
+A2     = PF5 [P2-1]
+A3     = PF4 [J2_ID]
+A4     = PF1 ------
+A5     = PF0 ------
+D0/RX  = PD2 [P1-9]
+D1/TX  = PD3 [P1-8]
+D2/SDA = PD1 [P1-7 / HDMI1P7 / DE91P9 / START|C]
+D3/SCL = PD0 [P1-6 / HDMI1P6 / DE91P7 / SELECT]
+D4     = PD4 [J1_ID]
+D5     = PC6 [P1-5 / HDMI1P5 / DE91P6 / A]
+D6     = PD7 [P1-4 / HDMI1P4 / DE91P4 / GND]
+D7     = PE6 [P1-3 / HDMI1P3 / DE91P3 / GND]
+D8     = PB4 [P1-2 / HDMI1P2 / DE91P2 / P1DOWN]
+D9     = PB5 [P1-1 / HDMI1P1 / DE91P1 / P1UP]
+D10    = PB6 [P2-7]
+D11    = PB7 ------
+D12    = PD6 ------
+D13    = PC7 ------
+D14    = PB3 [P2-5]
+D15    = PB1 [P2-4]
+D16    = PB2 [P2-6]
+
+Controller DB9 pins (looking face-on to the end of the plug):
+
+ 5 4 3 2 1
+  9 8 7 6
+
+Connect pin 5 to +5V and pin 8 to GND
+Connect the remaining pins to digital I/O pins (see below)
+DB9    Arduino Pro Micro
+--------------------------------------
+ 1     A0  PF7
+ 2     A1  PF6
+ 3     A2  PF5
+ 4     A3  PF4
+ 6     14  PB3
+ 7      7  PE6
+ 9     15  PB1
 */
 
     // Setup select pin as output high (7, PE6)

@@ -45,31 +45,30 @@ const char *gp_serial = "NES to USB";
 
 /*
 Wire it all up according to the following table:
-
 https://docs.arduino.cc/hacking/hardware/PinMapping32u4
-A0     = PF7
-A1     = PF6
-A2     = PF5
-A3     = PF4
-A4     = PF1
-A5     = PF0
-D0/RX  = PD2
-D1/TX  = PD3
-D2/SDA = PD1
-D3/SCL = PD0
-D4     = PD4
-D5     = PC6
-D6     = PD7
-D7     = PE6
-D8     = PB4
-D9     = PB5
-D10    = PB6
-D11    = PB7
-D12    = PD6
-D13    = PC7
-D14    = PB3
-D15    = PB1
-D16    = PB2
+A0     = PF7 [P2-3 / HDMI2P3 / (S)NES2P4 / DATA1]
+A1     = PF6 [P2-2 / HDMI2P2 / (S)NES2P3 / LATCH]
+A2     = PF5 [P2-1 / HDMI2P1 / (S)NES2P2 / CLOCK]
+A3     = PF4 [J2_ID]
+A4     = PF1 ------
+A5     = PF0 ------
+D0/RX  = PD2 [P1-9]
+D1/TX  = PD3 [P1-8]
+D2/SDA = PD1 [P1-7]
+D3/SCL = PD0 [P1-6 / HDMI1P6 / NES1P5/SNES1P6 / DATA3|SELECT]
+D4     = PD4 [J1_ID]
+D5     = PC6 [P1-5 / HDMI1P5 / NES1P6|SNES1P5 / DATA4|DATA2]
+D6     = PD7 [P1-4]
+D7     = PE6 [P1-3 / HDMI1P3 / (S)NES1P4 / DATA1]
+D8     = PB4 [P1-2 / HDMI1P2 / (S)NES1P3 / LATCH]
+D9     = PB5 [P1-1 / HDMI1P1 / (S)NES1P2 / CLOCK]
+D10    = PB6 [P2-7]
+D11    = PB7 ------
+D12    = PD6 ------
+D13    = PC7 ------
+D14    = PB3 [P2-5 / HDMI2P5 / NES2P6|SNES2P5 / DATA4|DATA2]
+D15    = PB1 [P2-4]
+D16    = PB2 [P2-6 / HDMI2P6 / NES2P5|SNES2P6 / DATA3|SELECT]
 
 NES        SNES             Arduino Pro Micro
 ---------------------------------------------
@@ -81,6 +80,7 @@ D1         (GP1: DATA)      A0  (PF7, Gamepad 1)
 D1         (GP2: DATA)      A1  (PF6, Gamepad 2)
 D1         (GP3: DATA)      A2  (PF5, Gamepad 3, not currently used)
 D1         (GP4: DATA)      A3  (PF4, Gamepad 4, not currently used)
+*/
 
 // Set up USB HID gamepads
 Gamepad_ Gamepad[GAMEPAD_COUNT];

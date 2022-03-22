@@ -45,29 +45,29 @@ const char *gp_serial = "PC Engine to USB";
 PC Engine / TurboGrafx-16  controller wiring
 
 https://docs.arduino.cc/hacking/hardware/PinMapping32u4
-A0     = PF7
-A1     = PF6
-A2     = PF5
-A3     = PF4
-A4     = PF1
-A5     = PF0
-D0/RX  = PD2
-D1/TX  = PD3
-D2/SDA = PD1
-D3/SCL = PD0
-D4     = PD4
-D5     = PC6
-D6     = PD7
-D7     = PE6
-D8     = PB4
-D9     = PB5
-D10    = PB6
-D11    = PB7
-D12    = PD6
-D13    = PC7
-D14    = PB3
-D15    = PB1
-D16    = PB2
+A0     = PF7 [P2-3 / HDMI2P3 / PCE124 / D2]
+A1     = PF6 [P2-2 / HDMI2P2 / PCE2P3 / D1]
+A2     = PF5 [P2-1 / HDMI2P1 / PCE2P2 / D0]
+A3     = PF4 [J2_ID]
+A4     = PF1 ------
+A5     = PF0 ------
+D0/RX  = PD2 [P1-9]
+D1/TX  = PD3 [P1-8]
+D2/SDA = PD1 [P1-7]
+D3/SCL = PD0 [P1-6 / HDMI1P6 / PCE1P6 / CLR]
+D4     = PD4 [J1_ID]
+D5     = PC6 [P1-5 / HDMI1P5 / PCE1P6 / SEL]
+D6     = PD7 [P1-4 / HDMI1P4 / PCE1P5 / D3]
+D7     = PE6 [P1-3 / HDMI1P3 / PCE1P4 / D2]
+D8     = PB4 [P1-2 / HDMI1P2 / PCE1P3 / D1]
+D9     = PB5 [P1-1 / HDMI1P1 / PCE1P2 / D0]
+D10    = PB6 [P2-7]
+D11    = PB7 ------
+D12    = PD6 ------
+D13    = PC7 ------
+D14    = PB3 [P2-5 / HDMI2P5 / PCE2P6 / SEL]
+D15    = PB1 [P2-4 / HDMI2P4 / PCE2P5 / D3]
+D16    = PB2 [P2-6 / HDMI2P6 / PCE2P6 / CLR]
 
 PC Engine (P1)    Arduino Pro Micro
 --------------------------------------
