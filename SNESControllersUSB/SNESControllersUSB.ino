@@ -55,10 +55,12 @@ inline void sendClock() __attribute__((always_inline));
 // --------------------------------------
 // VCC                       VCC (All gamepads)
 // GND                       GND (All gamepads)
-// OUT0 (LATCH)              2   (PD1, All gamepads)
-// CUP  (CLOCK)              3   (PD0, All gamepads)
-// D1   (GP1: DATA)          A0  (PF7, Gamepad 1) 
-// D1   (GP2: DATA)          A1  (PF6, Gamepad 2)
+// OUT0 (LATCH)              D8  (PB4, Gamepad 1)
+// OUT0 (LATCH)              A1  (PF6, Gamepad 2)
+// CUP  (CLOCK)              D9  (PB5, Gamepad 1)
+// CUP  (CLOCK)              A2  (PF5, Gamepad 2)
+// D1   (GP1: DATA)          D7  (PE6, Gamepad 1) 
+// D1   (GP2: DATA)          A0  (PF7, Gamepad 2)
 // D1   (GP3: DATA)          A2  (PF5, Gamepad 3, not currently used)
 // D1   (GP4: DATA)          A3  (PF4, Gamepad 4, not currently used)
 
@@ -111,6 +113,10 @@ void setup()
 
   delay(300);
   detectControllerTypes();
+  
+  for(gp=0; gp<GAMEPAD_COUNT; gp++) {
+    Serial.println(controllerType[gp]);
+  }
 }
 
 void loop() { while(1)
@@ -135,11 +141,9 @@ void loop() { while(1)
     {
       for(gp=0; gp<GAMEPAD_COUNT; gp++) {
         if (gpBit[gp] == B01000000){
-          Serial.println("Joy1");
           if((PINE & gpBit[gp])==0) buttons[gp][btnByte[btn]] |= btnBits[btn];
         }
         if (gpBit[gp] == B10000000){
-          Serial.println("Joy2");
           if((PINF & gpBit[gp])==0) buttons[gp][btnByte[btn]] |= btnBits[btn];
         }
       }
@@ -198,11 +202,9 @@ void detectControllerTypes()
     {
       for(gp=0; gp<GAMEPAD_COUNT; gp++) 
         if (gpBit[gp] == B01000000){
-        Serial.println("Joy1");
         (PINE & gpBit[gp]) ? buttons[gp][btnByte[btn]] &= ~btnBits[btn] : buttons[gp][btnByte[btn]] |= btnBits[btn];
         }
         if (gpBit[gp] == B10000000){
-        Serial.println("Joy2");
         (PINF & gpBit[gp]) ? buttons[gp][btnByte[btn]] &= ~btnBits[btn] : buttons[gp][btnByte[btn]] |= btnBits[btn];
         }
       sendClock();
