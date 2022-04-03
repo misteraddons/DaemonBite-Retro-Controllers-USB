@@ -74,7 +74,7 @@ Gamepad_ Gamepad[GAMEPAD_COUNT];
 // Controllers
 uint8_t buttons[GAMEPAD_COUNT_MAX][2] = {{0,0},{0,0}};
 uint8_t buttonsPrev[GAMEPAD_COUNT_MAX][2] = {{0,0},{0,0}};
-uint8_t gpBit[GAMEPAD_COUNT_MAX] = {B10000000,B01000000};
+uint8_t gpBit[GAMEPAD_COUNT_MAX] = {B01000000,B10000000};
 ControllerType controllerType[GAMEPAD_COUNT_MAX] = {NONE,NONE};
 uint8_t btnByte[12] = {0,0,0,0,1,1,1,1,0,0,0,0};
 uint8_t btnBits[12] = {0x01,0x04,0x40,0x80,UP,DOWN,LEFT,RIGHT,0x02,0x08,0x10,0x20};
@@ -92,13 +92,17 @@ uint8_t counter = 0;
 
 void setup()
 {
-  // Setup latch and clock pins (2,3 or PD1, PD0)
-  DDRD  |=  B00000011; // output
-  PORTD &= ~B00000011; // low
+  // Setup latch and clock pins
+  DDRB |= B00110000; // output
+  PORTB &= ~B00110000; // low
+  DDRF |= B01100000; // output
+  PORTF &= ~B01100000; // low
 
-  // Setup data pins A0-A3 (PF7-PF4)
-  DDRF  &= ~B11110000; // inputs
-  PORTF |=  B11110000; // enable internal pull-ups
+// Setup data pins
+  DDRE &= ~B01000000; // inputs
+  PORTE |=  B01000000; // pull-ups
+  DDRF &= ~B10000000; // inputs
+   PORTF |=  B10000000; // pull-ups
 
   #ifdef DEBUG
   Serial.begin(115200);
@@ -130,7 +134,14 @@ void loop() { while(1)
     for(uint8_t btn=0; btn<buttonCount; btn++)
     {
       for(gp=0; gp<GAMEPAD_COUNT; gp++) {
-        if((PINF & gpBit[gp])==0) buttons[gp][btnByte[btn]] |= btnBits[btn];
+        if (gpBit[gp] == B01000000){
+          Serial.println("Joy1");
+          if((PINE & gpBit[gp])==0) buttons[gp][btnByte[btn]] |= btnBits[btn];
+        }
+        if (gpBit[gp] == B10000000){
+          Serial.println("Joy2");
+          if((PINF & gpBit[gp])==0) buttons[gp][btnByte[btn]] |= btnBits[btn];
+        }
       }
       sendClock();
     }
@@ -186,7 +197,14 @@ void detectControllerTypes()
     for(uint8_t btn=0; btn<buttonCount; btn++)
     {
       for(gp=0; gp<GAMEPAD_COUNT; gp++) 
+        if (gpBit[gp] == B01000000){
+        Serial.println("Joy1");
+        (PINE & gpBit[gp]) ? buttons[gp][btnByte[btn]] &= ~btnBits[btn] : buttons[gp][btnByte[btn]] |= btnBits[btn];
+        }
+        if (gpBit[gp] == B10000000){
+        Serial.println("Joy2");
         (PINF & gpBit[gp]) ? buttons[gp][btnByte[btn]] &= ~btnBits[btn] : buttons[gp][btnByte[btn]] |= btnBits[btn];
+        }
       sendClock();
     }
 
@@ -214,17 +232,21 @@ void detectControllerTypes()
 void sendLatch()
 {
   // Send a latch pulse to (S)NES controller(s)
-  PORTD |=  B00000010; // Set HIGH
+  PORTB |=  B00010000; // Set HIGH
+  PORTF |=  B01000000; // Set HIGH
   DELAY_CYCLES(CYCLES_LATCH); 
-  PORTD &= ~B00000010; // Set LOW
+  PORTB &= ~B00010000; // Set LOW
+  PORTF &= ~B01000000; // Set LOW
   DELAY_CYCLES(CYCLES_PAUSE2);
 }
 
 void sendClock()
 {
   // Send a clock pulse to (S)NES controller(s)
-  PORTD |=  B10000001; // Set HIGH
+  PORTB |=  B10100000; // Set HIGH
+  PORTF |=  B10100000; // Set HIGH
   DELAY_CYCLES(CYCLES_CLOCK); 
-  PORTD &= ~B10000001; // Set LOW
+  PORTB &= ~B10100000; // Set LOW
+  PORTF &= ~B10100000; // Set LOW
   DELAY_CYCLES(CYCLES_PAUSE1); 
 }
