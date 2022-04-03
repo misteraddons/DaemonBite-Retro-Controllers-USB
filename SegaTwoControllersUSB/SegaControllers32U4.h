@@ -47,24 +47,24 @@ enum
   SC_BIT_SH_DOWN   = 1,
   SC_BIT_SH_LEFT   = 2,
   SC_BIT_SH_RIGHT  = 3,
-  SC_PIN1_BIT   = 0,
-  SC_PIN2_BIT   = 1,
-  SC_PIN3_BIT   = 2,
-  SC_PIN4_BIT   = 3,
-  SC_PIN6_BIT   = 4,
-  SC_PIN9_BIT   = 5,
-  DB9_PIN1_BIT1 = 7,
-  DB9_PIN2_BIT1 = 6,
-  DB9_PIN3_BIT1 = 5,
-  DB9_PIN4_BIT1 = 4,
-  DB9_PIN6_BIT1 = 3,
-  DB9_PIN9_BIT1 = 1,
-  DB9_PIN1_BIT2 = 3,
-  DB9_PIN2_BIT2 = 2,
-  DB9_PIN3_BIT2 = 1,
-  DB9_PIN4_BIT2 = 0,
-  DB9_PIN6_BIT2 = 4,
-  DB9_PIN9_BIT2 = 7
+//  SC_PIN1_BIT   = 0,
+//  SC_PIN2_BIT   = 1,
+//  SC_PIN3_BIT   = 2,
+//  SC_PIN4_BIT   = 3,
+//  SC_PIN6_BIT   = 4,
+//  SC_PIN9_BIT   = 5,
+//  DB9_PIN1_BIT1 = 5,
+//  DB9_PIN2_BIT1 = 4,
+//  DB9_PIN3_BIT1 = 6,
+//  DB9_PIN4_BIT1 = 7,
+//  DB9_PIN6_BIT1 = 6,
+//  DB9_PIN9_BIT1 = 1,
+//  DB9_PIN1_BIT2 = 5,
+//  DB9_PIN2_BIT2 = 6,
+//  DB9_PIN3_BIT2 = 7,
+//  DB9_PIN4_BIT2 = 2,
+//  DB9_PIN6_BIT2 = 1,
+//  DB9_PIN9_BIT2 = 6
 };
 
 const byte SC_CYCLE_DELAY = 10; // Delay (µs) between setting the select pin and reading the button pins
@@ -86,9 +86,12 @@ class SegaControllers32U4 {
     boolean _connected[2];
     boolean _sixButtonMode[2];
 
-    byte _inputReg1;
-    byte _inputReg2;
-    byte _inputReg3;
+//    byte _inputReg1;
+//    byte _inputReg2;
+//    byte _inputReg3;
+//    byte _inputReg4;
+//    byte _inputReg5;
+//    byte _inputReg6;
 };
 
 #endif
