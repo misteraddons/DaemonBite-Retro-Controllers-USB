@@ -95,16 +95,16 @@ uint8_t counter = 0;
 void setup()
 {
   // Setup latch and clock pins
-  DDRB |= B00110000; // output
-  PORTB &= ~B00110000; // low
-  DDRF |= B01100000; // output
-  PORTF &= ~B01100000; // low
+  DDRB |= B00110000; // gamepad 1 latch + clock output
+  PORTB &= ~B00110000; // gamepad 1 latch + clock low
+  DDRF |= B01100000; // gamepad 2 latch + clock output
+  PORTF &= ~B01100000; // gamepad 2 latch + clock low
 
-// Setup data pins
-  DDRE &= ~B01000000; // inputs
-  PORTE |=  B01000000; // pull-ups
-  DDRF &= ~B10000000; // inputs
-   PORTF |=  B10000000; // pull-ups
+  // Setup data pins
+  DDRE &= ~B01000000; // gamepad 1 inputs
+  PORTE |=  B01000000; // gamepapd 1 pull-ups
+  DDRF &= ~B10000000; // gamepad 2 inputs
+  PORTF |=  B10000000; // gamepad 2 pull-ups
 
   #ifdef DEBUG
   Serial.begin(115200);
@@ -113,10 +113,6 @@ void setup()
 
   delay(300);
   detectControllerTypes();
-  
-  for(gp=0; gp<GAMEPAD_COUNT; gp++) {
-    Serial.println(controllerType[gp]);
-  }
 }
 
 void loop() { while(1)
@@ -224,6 +220,9 @@ void detectControllerTypes()
         if(buttonCountNew < 12)
           buttonCountNew = 12;
       }
+    }
+    for(gp=0; gp<GAMEPAD_COUNT; gp++) {
+      Serial.println(controllerType[gp]);
     }
   }
 
